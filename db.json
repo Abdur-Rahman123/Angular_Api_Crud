@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "firstName": "karim",
+      "lastName": "jashim",
+      "email": "karim@gmail.com",
+      "mobile": "45545",
+      "salary": "45",
+      "id": 6
+    },
+    {
+      "firstName": "Mahmudul",
+      "lastName": "hridoy",
+      "email": "hridoy@gmail.com",
+      "mobile": "03737388",
+      "salary": "200",
+      "id": 8
+    },
+    {
+      "firstName": "muntsir",
+      "lastName": "alam",
+      "email": "muntasir@gmail.com",
+      "mobile": "01738934839",
+      "salary": "6000",
+      "id": 9
+    },
+    {
+      "firstName": "ahmed",
+      "lastName": "iftekhar",
+      "email": "iftekhar@gmail.com",
+      "mobile": "01634874893",
+      "salary": "200",
+      "id": 10
+    },
+    {
+      "firstName": "Abdur ",
+      "lastName": "Rahman",
+      "email": "rahman@gmail.com",
+      "mobile": "017383493",
+      "salary": "300",
+      "id": 11
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
