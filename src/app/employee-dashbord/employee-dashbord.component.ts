@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 import { EmployeeModel } from './employee-dashbord.model';
+import { Validators } from '@angular/forms';
+import { MustMatch } from './MustMatch';
 @Component({
   selector: 'app-employee-dashbord',
   templateUrl: './employee-dashbord.component.html',
@@ -15,24 +17,35 @@ export class EmployeeDashbordComponent implements OnInit {
   showAdd!:boolean;
   searchValue:string;
   showUpdate!:boolean;
+  submitted=false;
   constructor(private formBuilder: FormBuilder,private api:ApiService) { }
 
   ngOnInit(): void {
     this.formValue = this.formBuilder.group({
-      firstName:[''],
-      lastName:[''],
-      email:[''],
-      mobile:[''],
-      salary:['']
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
+      email:['',[Validators.required,Validators.email]],
+      mobile:['',[Validators.required,Validators.minLength(6)]],
+      salary:['',[Validators.required,Validators.minLength(2)]],
+      password:['',[Validators.required,Validators.minLength(4)]],
+      confirmPassword:['',Validators.required],
+    },{
+      validator:MustMatch('password','confirmPassword')
     })
     this.getAllEmployees();
   }
+  get f() { return this.formValue.controls; }
   clickAddEmployee(){
     this.formValue.reset();
     this.showAdd=true; 
     this.showUpdate=false;
   }
   postEmployee(){
+    this.submitted=true;
+    if (this.formValue.invalid) {
+      return;
+  }else{
+    
     this.EmployeeModelObj.firstName=this.formValue.value.firstName;
     this.EmployeeModelObj.lastName=this.formValue.value.lastName;
     this.EmployeeModelObj.email=this.formValue.value.email;
@@ -50,8 +63,10 @@ export class EmployeeDashbordComponent implements OnInit {
       alert("something wrong happened")
     })
   }
+  }
   //get employee
   getAllEmployees(){
+  this.submitted=false;
     this.api.getEmployee().subscribe(res=>{
       this.employeeData = res;
     })
