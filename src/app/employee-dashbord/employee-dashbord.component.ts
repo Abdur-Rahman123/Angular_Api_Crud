@@ -14,6 +14,7 @@ export class EmployeeDashbordComponent implements OnInit {
   formValue!: FormGroup;
   EmployeeModelObj:EmployeeModel=new EmployeeModel();
   employeeData!:any;
+  p:any;
   showAdd!:boolean;
   searchValue:string;
   showUpdate!:boolean;

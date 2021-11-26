@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeDashbordComponent } from './employee-dashbord/employee-dashbord.component';
 import { SearchFilterPipe } from './search-filter.pipe';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +21,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

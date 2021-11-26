@@ -24,7 +24,8 @@
 
 
       
-        <tr *ngFor="let raw of employeeData |searchFilter:searchValue">
+        <tr *ngFor="let raw of employeeData |paginate: 
+        { itemsPerPage: 2, currentPage: p } |searchFilter:searchValue">
           
             <td>{{raw.id}}</td>
             <td>{{raw.firstName}}</td>
@@ -39,6 +40,10 @@
             
         </tr>
     </tbody>
+    <pagination-controls 
+(pageChange)="p = $event" 
+class="float-right">
+</pagination-controls>
 </table>
 
 <!-- Button trigger modal -->
